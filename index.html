@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="NITRIX RECORDS — Independent music label. Discover our artists, listen to our releases and connect with us.">
+
+  <title>NITRIX RECORDS | Official Website</title>
+
+  <style>
+    :root {
+      --bg: #080808;
+      --card: #121212;
+      --red: #e50914;
+      --white: #ffffff;
+      --muted: #aaaaaa;
+      --border: #292929;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8, 8, 8, .96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .logo span,
+    .red {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .nav-links a {
+      color: #ccc;
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .hero {
+      min-height: 550px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(229, 9, 20, .18),
+        transparent 68%
+      );
+    }
+
+    .hero-content {
+      width: 100%;
+      padding: 90px 0;
+    }
+
+    .eyebrow {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 20px 0;
+      font-size: clamp(44px, 10vw, 90px);
+      line-height: 1.03;
+      letter-spacing: -3px;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+      color: var(--muted);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 19px;
+      border: 1px solid var(--red);
+      border-radius: 5px;
+      background: var(--red);
+      color: white;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-align: center;
+      text-decoration: none;
+      transition: .2s;
+    }
+
+    .button:hover {
+      background: white;
+      border-color: white;
+      color: #080808;
+    }
+
+    .button.secondary {
+      background: transparent;
+      border-color: #555;
+    }
+
+    .button.secondary:hover {
+      background: white;
+      border-color: white;
+    }
+
+    section {
+      padding: 75px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .section-heading {
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      margin-top: 8px;
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.2;
+    }
+
+    .section-heading p:last-child {
+      margin-top: 10px;
+      color: var(--muted);
+    }
+
+    .about-box {
+      padding: 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      border-radius: 8px;
+    }
+
+    .about-box p {
+      color: #ccc;
+    }
+
+    .artist-grid,
+    .music-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .artist-card,
+    .music-card {
+      min-width: 0;
+      padding: 23px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .artist-card:hover,
+    .music-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--red);
+    }
+
+    .artist-number {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .artist-card h3,
+    .music-card h3 {
+      font-size: 19px;
+      overflow-wrap: anywhere;
+    }
+
+    .artist-card p,
+    .music-card p {
+      margin: 8px 0 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .music-card {
+      min-height: 210px;
+    }
+
+    .music-label {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 5px 8px;
+      background: rgba(229, 9, 20, .12);
+      color: #ff555d;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .discord-section {
+      padding: 50px 24px;
+      border: 1px solid #482020;
+      border-radius: 10px;
+      background:
+        radial-gradient(
+          ellipse at top,
+          rgba(229, 9, 20, .17),
+          transparent 70%
+        ),
+        var(--card);
+      text-align: center;
+    }
+
+    .discord-section h2 {
+      margin: 12px 0;
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.2;
+    }
+
+    .discord-section p {
+      max-width: 600px;
+      margin: auto;
+      color: var(--muted);
+    }
+
+    .discord-section .button {
+      margin-top: 24px;
+    }
+
+    .contact-box {
+      padding: 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+    }
+
+    .email {
+      display: inline-block;
+      margin-top: 12px;
+      font-weight: 700;
+      text-decoration-color: var(--red);
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 15px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 13px;
+      }
+
+      .hero {
+        min-height: 480px;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .artist-grid,
+      .music-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .artist-card,
+      .music-card {
+        padding: 17px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .artist-grid,
+      .music-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#home">
+        NITRIX <span>RECORDS</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">ABOUT</a>
+        <a href="#artists">ARTISTS</a>
+        <a href="#music">MUSIC</a>
+        <a href="#release">RELEASE</a>
+        <a href="#contact">CONTACT</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <p class="eyebrow">Independent Music Label</p>
+
+      <h1>NITRIX<br><span>RECORDS</span></h1>
+
+      <p>
+        A home for independent artists and the next wave of
+        Funk and Phonk. Discover our artists and join the movement.
+      </p>
+
+      <div class="buttons">
+        <a class="button" href="#music">DISCOVER MUSIC</a>
+
+        <a
+          class="button secondary"
+          href="https://discord.gg/tHv4rP6NbG"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          JOIN OUR DISCORD ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Who We Are</p>
+        <h2>ABOUT THE LABEL</h2>
+      </div>
+
+      <div class="about-box">
+        <p>
+          NITRIX RECORDS is an independent music label focused on
+          Funk, Phonk, and underground sounds. We bring artists and
+          music projects together while building a distinct identity
+          for every release.
+        </p>
+        <br>
+        <p>
+          Interested in releasing music with us? Join our Discord
+          server to contact the label and learn about the submission
+          process.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="artists">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Our Roster</p>
+        <h2>ARTISTS</h2>
+        <p>Discover the artists of NITRIX RECORDS.</p>
+      </div>
+
+      <div class="artist-grid">
+
+        <article class="artist-card">
+          <span class="artist-number">ARTIST 01</span>
+          <h3>NXISLWY</h3>
+          <p>Artist</p>
+          <a class="button"
+             href="https://open.spotify.com/artist/5wut54w0cEhuX69dGTDbap"
+             target="_blank" rel="noopener noreferrer">
+            LISTEN ON SPOTIFY ↗
+          </a>
+        </article>
+
+        <article class="artist-card">
+          <span class="artist-number">ARTIST 02</span>
+          <h3>DJ YCEVWF</h3>
+          <p>DJ / Producer</p>
+          <a class="button"
+             href="https://open.spotify.com/artist/13my5RrIWqgqbJ6zth8zHv"
+             target="_blank" rel="noopener noreferrer">
+            LISTEN ON SPOTIFY ↗
+          </a>
+        </article>
+
+        <article class="artist-card">
+          <span class="artist-number">ARTIST 03</span>
+          <h3>DJ DORIA</h3>
+          <p>DJ / Producer</p>
+          <a class="button"
+             href="https://open.spotify.com/artist/25JDxoYHPXdp9ZCvFSMwng"
+             target="_blank" rel="noopener noreferrer">
+            LISTEN ON SPOTIFY ↗
+          </a>
+        </article>
+
+        <article class="artist-card">
+          <span class="artist-number">ARTIST 04</span>
+          <h3>DJ HUUBOX</h3>
+          <p>DJ / Producer</p>
+          <a class="button"
+             href="https://open.spotify.com/artist/5DY8IH4EmT2c7WWoSCYJaQ"
+             target="_blank" rel="noopener noreferrer">
+            LISTEN ON SPOTIFY ↗
+          </a>
+        </article>
+
+        <article class="artist-card">
+          <span class="artist-number">ARTIST 05</span>
+          <h3>NITRIX</h3>
+          <p>Label Project</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="music">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Selected Releases</p>
+        <h2>FEATURED MUSIC</h2>
+        <p>Listen to selected releases connected to our music project.</p>
+      </div>
+
+      <div class="music-grid">
+
+        <article class="music-card">
+          <span class="music-label">FEATURED RELEASE</span>
+          <h3>LUCKY 424 FUNK</h3>
+          <p>DJ DORIA feat. NXISLWY</p>
+          <a class="button"
+             href="https://open.spotify.com/album/1V1RicvIcCGSOBGIgbnpof"
+             target="_blank" rel="noopener noreferrer">
+            LISTEN ON SPOTIFY ↗
+          </a>
+        </article>
+
+        <article class="music-card">
+          <span class="music-label">FEATURED RELEASE</span>
+          <h3>FUNK PARADOX</h3>
+          <p>Featured release</p>
+          <a class="button"
+             href="https://open.spotify.com/album/5UtxeSifg4u85fjS4LmvDa"
+             target="_blank" rel="noopener noreferrer">
+            LISTEN ON SPOTIFY ↗
+          </a>
+        </article>
+
+        <article class="music-card">
+          <span class="music-label">FEATURED RELEASE</span>
+          <h3>FUNK BATELHA</h3>
+          <p>Featured release</p>
+          <a class="button"
+             href="https://open.spotify.com/album/3YSfu7lfgqshumQAGAwHrX"
+             target="_blank" rel="noopener noreferrer">
+            LISTEN ON SPOTIFY ↗
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="release">
+    <div class="container">
+      <div class="discord-section">
+        <p class="eyebrow">Submit Your Music</p>
+        <h2>READY TO RELEASE?</h2>
+
+        <p>
+          Want to release your music with NITRIX RECORDS?
+          Join our Discord server to contact us and learn about
+          the music submission process.
+        </p>
+
+        <a
+          class="button"
+          href="https://discord.gg/tHv4rP6NbG"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          JOIN DISCORD &amp; SUBMIT YOUR MUSIC ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Get In Touch</p>
+        <h2>CONTACT</h2>
+      </div>
+
+      <div class="contact-box">
+        <p>
+          For general inquiries and music-related questions,
+          contact NITRIX RECORDS.
+        </p>
+
+        <a class="email" href="mailto:nitrixrecords@gmail.com">
+          nitrixrecords@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>
+      © <span id="year"></span>
+      <strong>NITRIX RECORDS</strong>. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+  </html>
